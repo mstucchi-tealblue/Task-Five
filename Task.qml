@@ -18,8 +18,7 @@ Item {
         Image {
             id: image
             Layout.fillWidth: true
-            source: "images/background.png"
-
+            source: ""
         }
 
         Text {

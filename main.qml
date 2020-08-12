@@ -13,37 +13,63 @@ Window {
         anchors.fill: parent
         color: "#00c2e0"
 
-
-        Row {
-            id: header
-            TextInput {
-                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
-                text: "Teal-Blue"
-                font.pointSize: 20
-                font.bold: true
-                color: "white"
+        ListModel {
+            id:mymodel1
+            ListElement {
+                title: "Take a shower"
             }
-
-            Image {
-                source: "images/star.png"
-                scale: 0.4
+            ListElement {
+                title: "Read the book"
+            }
+            ListElement {
+                title: "Take out the dog"
             }
         }
 
-        GridLayout {
-            anchors.fill: parent
+        Column {
+            spacing: 20
 
-            TryList {
-                //Layout.fillWidth: true
+            Row {
+                id: header
+                TextInput {
+                    id: boardName
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
+                    text: "Teal-Blue"
+                    font.pointSize: 20
+                    font.bold: true
+                    color: "white"
+
+                    Image {
+                        source: "images/star.png"
+                        scale: 0.4
+                        anchors {
+                            left: boardName.right
+                            verticalCenter: boardName.verticalCenter
+                        }
+                    }
+                }
 
 
             }
-            TryList {
-                //Layout.fillWidth: true
+
+            Row {
+                spacing: 10
+
+                List{
+                    model: mymodel1
+                    //mainRoot: root
+                }
+                List{
+                    title: "Todo"
+                    //mainRoot: root
+                }
+                List{
+                    title: "Doing"
+                    //mainRoot: root
+                    model: ""
+                }
+
             }
-
-
-
         }
     }
 
