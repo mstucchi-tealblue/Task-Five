@@ -5,5 +5,11 @@
         <file>List.qml</file>
         <file>InfoPopup.qml</file>
         <file>AddListPopup.qml</file>
+        <file>images/attach.png</file>
+        <file>images/background.png</file>
+        <file>images/dots.png</file>
+        <file>images/filled_star.png</file>
+        <file>images/lines.png</file>
+        <file>images/star.png</file>
     </qresource>
 </RCC>
