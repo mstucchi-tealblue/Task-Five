@@ -20,7 +20,6 @@ Item {
             id: image
             source: ""
             Layout.fillWidth: true
-
         }
 
         Text {

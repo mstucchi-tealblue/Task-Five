@@ -3,5 +3,7 @@
         <file>main.qml</file>
         <file>Task.qml</file>
         <file>List.qml</file>
+        <file>InfoPopup.qml</file>
+        <file>AddListPopup.qml</file>
     </qresource>
 </RCC>

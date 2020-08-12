@@ -12,21 +12,6 @@ Window {
         anchors.fill: parent
         color: "#00c2e0"
 
-        ListModel {
-            id:mymodel1
-            ListElement {
-                title: "Take a shower"
-                image: ""
-            }
-            ListElement {
-                title: "Read the book"
-                image: ""
-            }
-            ListElement {
-                title: "Take out the dog"
-                image: ""
-            }
-        }
 
         ColumnLayout {
             anchors.fill: parent
@@ -43,11 +28,17 @@ Window {
                     color: "white"
 
                     Image {
-                        source: "images/star.png"
+                        id: star
+                        property bool preferred: true
+                        source: preferred ? "images/star.png" : "images/filled_star.png"
                         scale: 0.4
                         anchors {
                             left: boardName.right
                             verticalCenter: boardName.verticalCenter
+                        }
+                        MouseArea{
+                            anchors.fill: parent
+                            onClicked: star.preferred = !star.preferred
                         }
                     }
                 }
@@ -57,6 +48,7 @@ Window {
 
             RowLayout {
                 spacing: 10
+                Layout.alignment: Qt.AlignLeft | Qt.AlignTop
 
                 List{
                     model: mymodel1
@@ -75,5 +67,22 @@ Window {
             }
         }
     }
+
+    ListModel {
+        id:mymodel1
+        ListElement {
+            title: "Take a shower"
+            image: ""
+        }
+        ListElement {
+            title: "Read the book"
+            image: ""
+        }
+        ListElement {
+            title: "Take out the dog"
+            image: ""
+        }
+    }
+
 
 }
