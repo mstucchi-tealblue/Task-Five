@@ -15,18 +15,21 @@ Rectangle{
         id:mymodel
         ListElement {
             title: "Take out the dog"
+            image: "images/background"
         }
         ListElement {
             title: "Take a shower"
+            image: ""
         }
         ListElement {
             title: "Read the book"
+            image: ""
         }
     }
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.margins: 20
+        anchors.margins: 10
 
         Text{
             id:listTitle
@@ -46,6 +49,9 @@ Rectangle{
             delegate: Task{
                 id: task
                 title: model.title
+                source: model.image
+                taskwidth: parent.width
+
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
@@ -77,26 +83,31 @@ Rectangle{
             width: 500
             height: 300
             closePolicy: Popup.CloseOnEscape
-            ColumnLayout{
-                RowLayout {
-                    Label {
-                        text: "Title"
-                    }
 
-                    TextField {
-                        property int index: taskInfo.index
-                        Layout.fillWidth: true
-                        text: lv.itemAtIndex(index).title.toString()
-                    }
-                    Label {
-                        text: "Image"
-                    }
-                    TextField {
-                        property int index: taskInfo.index
-                        Layout.fillWidth: true
-                        text: lv.itemAtIndex(index).image
-                    }
-                }
+            ColumnLayout{
+                //                RowLayout {
+                //                    Label {
+                //                        text: "Title"
+                //                    }
+
+                //                    TextField {
+                //                        property int index: taskInfo.index
+                //                        Layout.fillWidth: true
+                //                        text: lv.itemAtIndex.title
+                //                    }
+                //                }
+
+                //                RowLayout {
+                //                    Label {
+                //                        text: "Image"
+                //                    }
+
+                //                    TextField {
+                //                        property int index: taskInfo.index
+                //                        Layout.fillWidth: true
+                //                        text: lv.itemAtIndex(index).image
+                //                    }
+                //                }
 
                 RowLayout{
                     Button {
@@ -143,13 +154,24 @@ Rectangle{
                 }
 
                 RowLayout {
+                    Label {
+                        text: "Image source (optional)"
+                    }
+                    TextField {
+                        id: imagePath
+                        Layout.fillWidth: true
+                    }
+                }
+
+                RowLayout {
                     Layout.alignment: Qt.AlignBottom | Qt.AlignRight
                     Button {
                         id: okButton
                         text: "Ok"
                         onClicked: {
                             popup.close();
-                            mymodel.insert(mymodel.index, {title: newtitle.text})
+                            mymodel.insert(mymodel.index, {title: newtitle.text, image: imagePath.text})
+
                         }
                     }
                 }

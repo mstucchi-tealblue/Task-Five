@@ -6,7 +6,6 @@ Window {
     visible: true
     width: 1080
     height: 1080
-    title: qsTr("Trello")
 
     Rectangle {
         id: root
@@ -17,19 +16,23 @@ Window {
             id:mymodel1
             ListElement {
                 title: "Take a shower"
+                image: ""
             }
             ListElement {
                 title: "Read the book"
+                image: ""
             }
             ListElement {
                 title: "Take out the dog"
+                image: ""
             }
         }
 
-        Column {
-            spacing: 20
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 10
 
-            Row {
+            RowLayout {
                 id: header
                 TextInput {
                     id: boardName
@@ -52,7 +55,7 @@ Window {
 
             }
 
-            Row {
+            RowLayout {
                 spacing: 10
 
                 List{
