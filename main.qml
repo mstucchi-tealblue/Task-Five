@@ -51,6 +51,7 @@ Window {
                 Layout.alignment: Qt.AlignLeft | Qt.AlignTop
 
                 List{
+                    title: "Resources"
                     model: mymodel1
                     //mainRoot: root
                 }
@@ -61,7 +62,7 @@ Window {
                 List{
                     title: "Doing"
                     //mainRoot: root
-                    model: ""
+                    model: newmodel
                 }
 
             }
@@ -82,6 +83,15 @@ Window {
             title: "Take out the dog"
             image: ""
         }
+    }
+
+    ListModel {
+        id: newmodel
+        ListElement {
+            title: "Take a shower"
+            image: ""
+        }
+
     }
 
 

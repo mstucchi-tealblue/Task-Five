@@ -63,7 +63,7 @@ Rectangle{
 
         AddListPopup {
             id: addList
-            connected_model: mymodel
+            connected_model: lv.model
         }
 
     }
