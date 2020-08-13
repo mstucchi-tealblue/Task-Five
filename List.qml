@@ -15,12 +15,28 @@ Rectangle{
         anchors.fill: parent
         anchors.margins: 10
 
-        Text{
-            id:listTitle
-            text: "Resources"
-            color: "black"
-            font.pointSize: 18
-            clip: true
+        RowLayout{
+            spacing: 100
+            Text{
+                id:listTitle
+                text: "Resources"
+                color: "black"
+                font.pointSize: 18
+                clip: true
+            }
+            Image {
+                id: settings
+                source: "images/dots.png"
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked: {
+                        setting_pop.x_val = settings.x
+                        setting_pop.y_val = settings.y
+                        setting_pop.open()
+                }
+            }
+        }
         }
 
         ListView {
@@ -83,6 +99,26 @@ Rectangle{
         ListElement {
             title: "Read the book"
             image: ""
+        }
+    }
+
+    Popup {
+        property alias x_val: setting_pop.x
+        property alias y_val: setting_pop.y
+        id: setting_pop
+        x:0
+        y:0
+        height: 120
+        width: 120
+        ColumnLayout {
+            anchors.fill: parent
+            Button {
+                text: "Add a list"
+                onClicked: mainWindow.addList()
+            }
+            Button {
+                text: "Remove this list"
+            }
         }
     }
 }
