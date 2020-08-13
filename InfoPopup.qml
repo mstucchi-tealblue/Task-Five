@@ -35,8 +35,25 @@ Popup {
                 selectionColor: 'darkgray'
                 property Item curr: connected_listview.currentItem
                 text: curr !== null ? curr.source : "0"
-            }            
+            }
         }
+
+        RowLayout {
+
+            Label {
+                text: "Description"
+            }
+            TextArea {
+                id: taskDesc
+                Layout.rowSpan: 4
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                placeholderText: "Add task description"
+                property Item curr: connected_listview.currentItem
+                text: curr !== null ? curr.desc : "0"
+            }
+        }
+
         RowLayout{
             Button {
                 id: applyButton
@@ -44,6 +61,7 @@ Popup {
                 onClicked: {
                     connected_model.setProperty(connected_listview.currentIndex, "title", newtitle.text)
                     connected_model.setProperty(connected_listview.currentIndex, "image", imagePath.text)
+                    connected_model.setProperty(connected_listview.currentIndex, "desc", taskDesc.text)
                 }
             }
 
@@ -71,6 +89,7 @@ Popup {
         ListElement {
             title: "Decide what to plan"
             image: "images/background"
+            desc: ""
         }
     }
 }

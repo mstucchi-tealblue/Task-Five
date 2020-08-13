@@ -52,6 +52,7 @@ Rectangle{
                 id: task
                 title: model.title
                 source: model.image
+                desc: model.desc
                 taskwidth: lv.width
                 MouseArea {
                     anchors.fill: parent
@@ -105,6 +106,7 @@ Rectangle{
         ListElement {
             title: "Add your task.."
             image: "images/background"
+            desc: ""
         }
     }
 }

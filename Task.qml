@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.3
 Item {
     property alias title: title.text
     property alias source: image.source
+    property string desc
     property alias taskwidth: task.width
     implicitHeight: task.height
     implicitWidth: task.width

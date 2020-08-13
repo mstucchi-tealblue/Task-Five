@@ -4,8 +4,7 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.0
 
 Window {
-    property alias mainWindow: window
-    property alias modell : lv.model
+    property alias mainWindow: window    
     id: window
     height: 1080
     width:1920
@@ -100,6 +99,6 @@ Window {
 
     ListModel {
         id: initializer
-        ListElement {}
+        ListElement { title : "new"}
     }
 }
