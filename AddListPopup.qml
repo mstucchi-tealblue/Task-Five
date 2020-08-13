@@ -39,8 +39,9 @@ Popup {
                 text: "Ok"
                 onClicked: {
                     addListPopup.close();
-                    connected_model.insert(connected_model.index, {title: newtitle.text, image: imagePath.text})
-
+                    connected_model.insert(connected_model.index, {title: newtitle.text, image: imagePath.text});
+                    newtitle.clear();
+                    imagePath.clear();
                 }
             }
         }

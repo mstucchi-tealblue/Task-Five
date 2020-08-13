@@ -34,7 +34,7 @@ Rectangle{
                 id: task
                 title: model.title
                 source: model.image
-                taskwidth: parent.width
+                taskwidth: lv.width
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
@@ -48,6 +48,8 @@ Rectangle{
 
         InfoPopup {
             id: taskInfo
+            connected_listview: lv
+            connected_model: lv.model
         }
 
         Text{
@@ -84,6 +86,8 @@ Rectangle{
         }
     }
 }
+
+
 
 
 
