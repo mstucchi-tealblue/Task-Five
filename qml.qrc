@@ -11,5 +11,7 @@
         <file>images/filled_star.png</file>
         <file>images/lines.png</file>
         <file>images/star.png</file>
+        <file>BoardWithRepeater.qml</file>
+        <file>BoardWithListView.qml</file>
     </qresource>
 </RCC>
