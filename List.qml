@@ -17,11 +17,13 @@ Rectangle{
 
         RowLayout{
             spacing: 100
-            Text{
+            TextInput{
                 id:listTitle
                 text: "Resources"
                 color: "black"
                 font.pointSize: 18
+                selectByMouse: true
+                selectionColor: 'darkgray'
                 clip: true
             }
             Image {
@@ -31,12 +33,12 @@ Rectangle{
                 {
                     anchors.fill: parent
                     onClicked: {
-                        setting_pop.x_val = settings.x
-                        setting_pop.y_val = settings.y
-                        setting_pop.open()
+                        lv.currentIndex = index;
+                        setting_popup.open()
+                    }
                 }
+
             }
-        }
         }
 
         ListView {
@@ -45,7 +47,7 @@ Rectangle{
             width: parent.width
             anchors.margins:10
             clip:true
-            model: mymodel
+            model: newListModel
             delegate: Task{
                 id: task
                 title: model.title
@@ -62,12 +64,6 @@ Rectangle{
             spacing: 10
         }
 
-        InfoPopup {
-            id: taskInfo
-            connected_listview: lv
-            connected_model: lv.model
-        }
-
         Text{
             text: "Add a card..."
             color: "darkgray"
@@ -79,46 +75,36 @@ Rectangle{
             }
         }
 
-        AddListPopup {
-            id: addList
-            connected_model: lv.model
-        }
+    }
+
+    // Popups
+
+    ListSettingsPopup {
+        id: setting_popup
+        x_val : settings.x
+        y_val : settings.y
+        index: lv.currentIndex
 
     }
+
+    InfoPopup {
+        id: taskInfo
+        connected_listview: lv
+        connected_model: lv.model
+    }
+
+    AddListPopup {
+        id: addList
+        connected_model: lv.model
+
+    }
+
     // Sample model
     ListModel {
-        id:mymodel
+        id:newListModel
         ListElement {
-            title: "Take out the dog"
+            title: "Add your task.."
             image: "images/background"
-        }
-        ListElement {
-            title: "Take a shower"
-            image: ""
-        }
-        ListElement {
-            title: "Read the book"
-            image: ""
-        }
-    }
-
-    Popup {
-        property alias x_val: setting_pop.x
-        property alias y_val: setting_pop.y
-        id: setting_pop
-        x:0
-        y:0
-        height: 120
-        width: 120
-        ColumnLayout {
-            anchors.fill: parent
-            Button {
-                text: "Add a list"
-                onClicked: mainWindow.addList()
-            }
-            Button {
-                text: "Remove this list"
-            }
         }
     }
 }

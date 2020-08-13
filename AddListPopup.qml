@@ -20,6 +20,8 @@ Popup {
             TextField {
                 id:newtitle
                 Layout.fillWidth: true
+                selectByMouse: true
+                selectionColor: 'darkgray'
             }
         }
         RowLayout {
@@ -29,6 +31,8 @@ Popup {
             TextField {
                 id: imagePath
                 Layout.fillWidth: true
+                selectByMouse: true
+                selectionColor: 'darkgray'
             }
         }
 

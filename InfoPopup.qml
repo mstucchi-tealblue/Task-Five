@@ -18,6 +18,8 @@ Popup {
             TextField {
                 id: newtitle
                 Layout.fillWidth: true
+                selectByMouse: true
+                selectionColor: 'darkgray'
                 property Item curr: connected_listview.currentItem
                 text: curr !== null ? curr.title : "0"
             }
@@ -29,8 +31,10 @@ Popup {
             TextField {
                 id: imagePath
                 Layout.fillWidth: true
+                selectByMouse: true
+                selectionColor: 'darkgray'
                 property Item curr: connected_listview.currentItem
-                text: curr !== null ? curr.title : "0"
+                text: curr !== null ? curr.source : "0"
             }            
         }
         RowLayout{
