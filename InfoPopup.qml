@@ -5,8 +5,8 @@ import QtQuick.Controls 2.12
 // Task Information Popup
 Popup {
     property int index_p
-    property ListView connected_listview: ListView {model: samplemodel}
-    property ListModel connected_model: samplemodel
+    property ListView connectedListview: ListView {model: sampleModel}
+    property ListModel connectedModel: sampleModel
     width: 500
     height: 300
     closePolicy: Popup.CloseOnEscape
@@ -16,11 +16,11 @@ Popup {
                 text: "Title"
             }
             TextField {
-                id: newtitle
+                id: newTitle
                 Layout.fillWidth: true
                 selectByMouse: true
                 selectionColor: 'darkgray'
-                property Item curr: connected_listview.currentItem
+                property Item curr: connectedListview.currentItem
                 text: curr !== null ? curr.title : "0"
             }
         }
@@ -33,7 +33,7 @@ Popup {
                 Layout.fillWidth: true
                 selectByMouse: true
                 selectionColor: 'darkgray'
-                property Item curr: connected_listview.currentItem
+                property Item curr: connectedListview.currentItem
                 text: curr !== null ? curr.source : "0"
             }
         }
@@ -49,7 +49,7 @@ Popup {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 placeholderText: "Add task description"
-                property Item curr: connected_listview.currentItem
+                property Item curr: connectedListview.currentItem
                 text: curr !== null ? curr.desc : "0"
             }
         }
@@ -59,9 +59,9 @@ Popup {
                 id: applyButton
                 text: "Apply"
                 onClicked: {
-                    connected_model.setProperty(connected_listview.currentIndex, "title", newtitle.text)
-                    connected_model.setProperty(connected_listview.currentIndex, "image", imagePath.text)
-                    connected_model.setProperty(connected_listview.currentIndex, "desc", taskDesc.text)
+                    connectedModel.setProperty(connectedListview.currentIndex, "title", newTitle.text)
+                    connectedModel.setProperty(connectedListview.currentIndex, "image", imagePath.text)
+                    connectedModel.setProperty(connectedListview.currentIndex, "desc", taskDesc.text)
                 }
             }
 
@@ -77,7 +77,7 @@ Popup {
                 text: "Delete Task"
                 highlighted: true
                 onClicked: {
-                    connected_model.remove(connected_model.index);
+                    connectedModel.remove(connectedModel.index);
                     taskInfo.close()
                 }
             }
@@ -85,7 +85,7 @@ Popup {
     }
     // Sample model
     ListModel {
-        id: samplemodel
+        id: sampleModel
         ListElement {
             title: "Decide what to plan"
             image: "images/background"

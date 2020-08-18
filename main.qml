@@ -9,6 +9,7 @@ Window {
     height: 1080
     width:1920
     color: "#00c2e0"
+    visible: true
 
     function addList()
     {
@@ -17,8 +18,7 @@ Window {
 
     function removeList(index)
     {
-        //to implement, so far i tried a lot of solution but no one works well
-        alert.open()
+        lv.model.remove(index)
     }
     Popup{
         id: alert
@@ -78,7 +78,7 @@ Window {
     }
 
     Rectangle {
-        id: root
+        id: lvContainer
         anchors {
             top: header.bottom
             bottom: window.bottom
@@ -86,9 +86,9 @@ Window {
         width: window.width
         ListView {
             id: lv
-            height: 800
-            width: 300
-            anchors.fill: parent
+            height: 1000
+            width: 1920
+            //anchors.fill: parent
             anchors.margins: 20
             spacing: 10
             orientation: ListView.Horizontal

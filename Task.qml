@@ -2,8 +2,10 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.3
 
 Item {
+    id: root
     property alias title: title.text
-    property alias source: image.source
+    property url url
+    property alias source: root.url
     property string desc
     property alias taskwidth: task.width
     implicitHeight: task.height
@@ -14,12 +16,12 @@ Item {
         id: task
         radius: 2
         color: "white"
-        width: image.width != 0 ? image.width : title.width
-        height: image.height + title.height + lines.height + 10
+        width: taskImage.width != 0 ? taskImage.width : title.width
+        height: taskImage.height + title.height + lines.height + 10
 
         Image {
-            id: image
-            source: ""
+            id: taskImage
+            source: Qt.resolvedUrl(url)
             Layout.fillWidth: true
         }
 
@@ -27,7 +29,7 @@ Item {
             id: title
             text: "Sample task"
             font.pointSize: 20
-            anchors.top: image.bottom
+            anchors.top: taskImage.bottom
         }
 
         Image {
@@ -48,7 +50,7 @@ Item {
                 left: lines.right
                 leftMargin: 5
             }
-            visible: image.source != "" ? true : false
+            visible: taskImage.source != "" ? true : false
         }
     }
 

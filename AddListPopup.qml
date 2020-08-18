@@ -4,7 +4,7 @@ import QtQuick.Controls 2.12
 
 Popup {
     id: addListPopup
-    property ListModel connected_model: samplemodel
+    property ListModel connected_model: sampleModel
     width: 200
     height: 300
     focus: true
@@ -18,7 +18,7 @@ Popup {
                 text: "New task name"
             }
             TextField {
-                id:newtitle
+                id:newTitle
                 Layout.fillWidth: true
                 selectByMouse: true
                 selectionColor: 'darkgray'
@@ -43,8 +43,8 @@ Popup {
                 text: "Ok"
                 onClicked: {
                     addListPopup.close();
-                    connected_model.insert(connected_model.index, {title: newtitle.text, image: imagePath.text});
-                    newtitle.clear();
+                    connected_model.insert(connected_model.index, {title: newTitle.text, image: imagePath.text});
+                    newTitle.clear();
                     imagePath.clear();
                 }
             }
@@ -53,7 +53,7 @@ Popup {
 
     // Sample model
     ListModel {
-        id: samplemodel
+        id: sampleModel
         ListElement {
             title: "Decide what to plan"
             image: "images/background"

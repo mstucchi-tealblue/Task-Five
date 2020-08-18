@@ -18,7 +18,7 @@ Rectangle{
         RowLayout{
             spacing: 100
             TextInput{
-                id:listTitle
+                id: listTitle
                 text: "Resources"
                 color: "black"
                 font.pointSize: 18
@@ -34,7 +34,7 @@ Rectangle{
                     anchors.fill: parent
                     onClicked: {
                         lv.currentIndex = index;
-                        setting_popup.open()
+                        settingPopup.open()
                     }
                 }
 
@@ -81,7 +81,7 @@ Rectangle{
     // Popups
 
     ListSettingsPopup {
-        id: setting_popup
+        id: settingPopup
         x_val : settings.x
         y_val : settings.y
         index: lv.currentIndex
@@ -90,8 +90,8 @@ Rectangle{
 
     InfoPopup {
         id: taskInfo
-        connected_listview: lv
-        connected_model: lv.model
+        connectedListview: lv
+        connectedModel: lv.model
     }
 
     AddListPopup {

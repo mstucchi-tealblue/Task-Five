@@ -2,11 +2,13 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.12
 
+
 Popup {
-    property alias x_val: setting_pop.x
-    property alias y_val: setting_pop.y
+    property alias x_val: settingPopup.x
+    property alias y_val: settingPopup.y
+    property alias addListButton: addButton
     property int index
-    id: setting_pop
+    id: settingPopup
     x:0
     y:0
     height: 120
@@ -14,8 +16,9 @@ Popup {
     ColumnLayout {
         anchors.fill: parent
         Button {
+            id: addButton
             text: "Add a list"
-            onClicked: mainWindow.addList()
+            //onClicked: mainWindow.addList()
         }
         Button {
             text: "Remove this list"
