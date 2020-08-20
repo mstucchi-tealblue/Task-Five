@@ -3,21 +3,21 @@ import QtQuick.Layouts 1.3
 
 Item {
     id: root
-    property alias title: title.text
     property url url
-    property alias source: root.url
-    property string desc
-    property alias taskwidth: task.width
+    property string descOfTask
+    property alias titleOfTask: taskTitle.text
+    property alias sourceOfTaskImage: root.url
+    property alias taskWidth: task.width
+
     implicitHeight: task.height
     implicitWidth: task.width
-
 
     Rectangle {
         id: task
         radius: 2
         color: "white"
-        width: taskImage.width != 0 ? taskImage.width : title.width
-        height: taskImage.height + title.height + lines.height + 10
+        width: taskImage.width != 0 ? taskImage.width : taskTitle.width
+        height: taskImage.height + taskTitle.height + taskLinesImage.height + 10
 
         Image {
             id: taskImage
@@ -26,28 +26,28 @@ Item {
         }
 
         Text {
-            id: title
+            id: taskTitle
             text: "Sample task"
             font.pointSize: 20
             anchors.top: taskImage.bottom
         }
 
         Image {
-            id: lines
+            id: taskLinesImage
             source: "images/lines.png"
             anchors {
-                top: title.bottom
+                top: taskTitle.bottom
                 topMargin: 5
             }
         }
 
         Image {
-            id: attach
+            id: taskAttachImage
             source: "images/attach.png"
             anchors {
-                top: title.bottom
+                top: taskTitle.bottom
                 topMargin: 5
-                left: lines.right
+                left: taskLinesImage.right
                 leftMargin: 5
             }
             visible: taskImage.source != "" ? true : false

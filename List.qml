@@ -7,9 +7,10 @@ Rectangle{
     color: "#c4c9cc"
     width: 280
     height: 800
-    property alias model: lv.model
+
     property alias title: listTitle.text
-    property Rectangle mainRoot
+    property alias model: listViewOfTasks.model
+    //property alias addCardMouseExt: addCardMouse
 
     ColumnLayout {
         anchors.fill: parent
@@ -19,7 +20,7 @@ Rectangle{
             spacing: 100
             TextInput{
                 id: listTitle
-                text: "Resources"
+                text: "Add a list title"
                 color: "black"
                 font.pointSize: 18
                 selectByMouse: true
@@ -27,22 +28,21 @@ Rectangle{
                 clip: true
             }
             Image {
-                id: settings
+                id: listSettingsImage
                 source: "images/dots.png"
                 MouseArea
                 {
                     anchors.fill: parent
                     onClicked: {
-                        lv.currentIndex = index;
+                        listViewOfTasks.currentIndex = index;
                         settingPopup.open()
                     }
                 }
-
             }
         }
 
         ListView {
-            id: lv
+            id: listViewOfTasks
             height: 650
             width: parent.width
             anchors.margins:10
@@ -50,14 +50,14 @@ Rectangle{
             model: newListModel
             delegate: Task{
                 id: task
-                title: model.title
-                source: model.image
-                desc: model.desc
-                taskwidth: lv.width
+                titleOfTask: model.title
+                sourceOfTaskImage: model.image
+                descOfTask: model.desc
+                taskWidth: listViewOfTasks.width
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        lv.currentIndex = index;
+                        listViewOfTasks.currentIndex = index;
                         taskInfo.open();
                     }
                 }
@@ -66,11 +66,13 @@ Rectangle{
         }
 
         Text{
+            id: addCardText
             text: "Add a card..."
             color: "darkgray"
             font.pointSize: 18
             clip: true
             MouseArea {
+                id: addCardMouse
                 anchors.fill: parent
                 onClicked: addList.open()
             }
@@ -79,30 +81,29 @@ Rectangle{
     }
 
     // Popups
-
     ListSettingsPopup {
         id: settingPopup
-        x_val : settings.x
-        y_val : settings.y
-        index: lv.currentIndex
+        x_val : listSettingsImage.x
+        y_val : listSettingsImage.y
+        index: listViewOfTasks.currentIndex
 
     }
 
     InfoPopup {
         id: taskInfo
-        connectedListview: lv
-        connectedModel: lv.model
+        connectedListview: listViewOfTasks
+        connectedModel: listViewOfTasks.model
     }
 
     AddListPopup {
         id: addList
-        connected_model: lv.model
+        connected_model: listViewOfTasks.model
 
     }
 
     // Sample model
     ListModel {
-        id:newListModel
+        id: newListModel
         ListElement {
             title: "Add your task.."
             image: "images/background"

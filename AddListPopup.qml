@@ -3,12 +3,13 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.12
 
 Popup {
-    id: addListPopup
-    property ListModel connected_model: sampleModel
+    id: addListPopup    
     width: 200
     height: 300
     focus: true
     closePolicy: Popup.CloseOnEscape
+    property ListModel connected_model: sampleModel
+
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: 5
@@ -18,10 +19,11 @@ Popup {
                 text: "New task name"
             }
             TextField {
-                id:newTitle
+                id: newTitleContainer
                 Layout.fillWidth: true
                 selectByMouse: true
                 selectionColor: 'darkgray'
+                placeholderText: "Insert new task title"
             }
         }
         RowLayout {
@@ -29,10 +31,11 @@ Popup {
                 text: "Image source (optional)"
             }
             TextField {
-                id: imagePath
+                id: newImagePathContainer
                 Layout.fillWidth: true
                 selectByMouse: true
                 selectionColor: 'darkgray'
+                placeholderText: "Insert new task image path"
             }
         }
 
@@ -43,9 +46,9 @@ Popup {
                 text: "Ok"
                 onClicked: {
                     addListPopup.close();
-                    connected_model.insert(connected_model.index, {title: newTitle.text, image: imagePath.text});
-                    newTitle.clear();
-                    imagePath.clear();
+                    connected_model.insert(connected_model.index, {title: newTitleContainer.text, image: newImagePathContainer.text, desc: ""});
+                    newTitleContainer.clear();
+                    newImagePathContainer.clear();
                 }
             }
         }

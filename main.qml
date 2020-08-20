@@ -11,9 +11,16 @@ Window {
     color: "#00c2e0"
     visible: true
 
+
+//    Popup {
+//        id: popu
+//        width:300
+//        height:300
+//    }
+
     function addList()
     {
-        lv.model.insert(lv.model.index,{title: "mamma", image: "" })
+        lv.model.insert(lv.model.index,{})
     }
 
     function removeList(index)
@@ -81,24 +88,23 @@ Window {
         id: lvContainer
         anchors {
             top: header.bottom
-            bottom: window.bottom
+            bottom: window.bottom            
         }
         width: window.width
         ListView {
             id: lv
             height: 1000
-            width: 1920
+            width: 1800
             //anchors.fill: parent
-            anchors.margins: 20
             spacing: 10
             orientation: ListView.Horizontal
             model: initializer
-            delegate: List { }
+            delegate: List { /*addCardMouseExt.onClicked: popu.open()*/ }
         }
     }
 
     ListModel {
         id: initializer
         ListElement { title : "new"}
-    }
+    }    
 }

@@ -16,12 +16,13 @@ Popup {
                 text: "Title"
             }
             TextField {
-                id: newTitle
+                id: taskTitleContainer
                 Layout.fillWidth: true
                 selectByMouse: true
                 selectionColor: 'darkgray'
+                placeholderText: "Set a title"
                 property Item curr: connectedListview.currentItem
-                text: curr !== null ? curr.title : "0"
+                text: curr !== null ? curr.titleOfTask : taskTitleContainer.placeholderText
             }
         }
         RowLayout {
@@ -29,28 +30,28 @@ Popup {
                 text: "Image path"
             }
             TextField {
-                id: imagePath
+                id: taskImagePathContainer
                 Layout.fillWidth: true
                 selectByMouse: true
                 selectionColor: 'darkgray'
+                placeholderText: "Set an image"
                 property Item curr: connectedListview.currentItem
-                text: curr !== null ? curr.source : "0"
+                text: curr !== null ? curr.sourceOfTaskImage : taskImagePathContainer.placeholderText
             }
         }
 
         RowLayout {
-
             Label {
                 text: "Description"
             }
             TextArea {
-                id: taskDesc
+                id: taskDescContainer
                 Layout.rowSpan: 4
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 placeholderText: "Add task description"
                 property Item curr: connectedListview.currentItem
-                text: curr !== null ? curr.desc : "0"
+                text: curr !== null ? curr.descOfTask : taskDescContainer.placeholderText
             }
         }
 
@@ -59,9 +60,9 @@ Popup {
                 id: applyButton
                 text: "Apply"
                 onClicked: {
-                    connectedModel.setProperty(connectedListview.currentIndex, "title", newTitle.text)
-                    connectedModel.setProperty(connectedListview.currentIndex, "image", imagePath.text)
-                    connectedModel.setProperty(connectedListview.currentIndex, "desc", taskDesc.text)
+                    connectedModel.setProperty(connectedListview.currentIndex, "title", taskTitleContainer.text)
+                    connectedModel.setProperty(connectedListview.currentIndex, "image", taskImagePathContainer.text)
+                    connectedModel.setProperty(connectedListview.currentIndex, "desc", taskDescContainer.text)
                 }
             }
 
