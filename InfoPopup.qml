@@ -70,7 +70,7 @@ Popup {
                 id: closeButton
                 text: "Close"                
                 onClicked: {
-                    taskInfo.close();
+                    taskInfoPopup.close();
                 }
             }
             Button {
@@ -79,7 +79,7 @@ Popup {
                 highlighted: true
                 onClicked: {
                     connectedModel.remove(connectedModel.index);
-                    taskInfo.close()
+                    taskInfoPopup.close()
                 }
             }
         }

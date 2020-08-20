@@ -9,15 +9,15 @@ Rectangle{
     height: 800
 
     property alias title: listTitle.text
-    property alias model: listViewOfTasks.model
-    //property alias addCardMouseExt: addCardMouse
+    property alias listViewOfTasksExt: listViewOfTasks
+    property alias listViewOfTaskModel: listViewOfTasks.model
 
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: 10
 
         RowLayout{
-            spacing: 100
+            spacing: 85
             TextInput{
                 id: listTitle
                 text: "Add a list title"
@@ -34,7 +34,6 @@ Rectangle{
                 {
                     anchors.fill: parent
                     onClicked: {
-                        listViewOfTasks.currentIndex = index;
                         settingPopup.open()
                     }
                 }
@@ -58,7 +57,7 @@ Rectangle{
                     anchors.fill: parent
                     onClicked: {
                         listViewOfTasks.currentIndex = index;
-                        taskInfo.open();
+                        mainWindow.openInfoPopup(listViewOfTasks, listViewOfTasks.model)
                     }
                 }
             }
@@ -66,15 +65,15 @@ Rectangle{
         }
 
         Text{
-            id: addCardText
-            text: "Add a card..."
+            id: addTaskText
+            text: "Add a task..."
             color: "darkgray"
             font.pointSize: 18
             clip: true
             MouseArea {
-                id: addCardMouse
+                id: addTaskMouseArea
                 anchors.fill: parent
-                onClicked: addList.open()
+                onClicked: mainWindow.openAddListPopup(listViewOfTasks.model)
             }
         }
 
@@ -86,18 +85,6 @@ Rectangle{
         x_val : listSettingsImage.x
         y_val : listSettingsImage.y
         index: listViewOfTasks.currentIndex
-
-    }
-
-    InfoPopup {
-        id: taskInfo
-        connectedListview: listViewOfTasks
-        connectedModel: listViewOfTasks.model
-    }
-
-    AddListPopup {
-        id: addList
-        connected_model: listViewOfTasks.model
 
     }
 

@@ -3,12 +3,12 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.12
 
 Popup {
-    id: addListPopup    
+    id: addTaskPopup
     width: 200
     height: 300
     focus: true
     closePolicy: Popup.CloseOnEscape
-    property ListModel connected_model: sampleModel
+    property ListModel connectedModel: sampleModel
 
     ColumnLayout {
         anchors.fill: parent
@@ -45,8 +45,8 @@ Popup {
                 id: okButton
                 text: "Ok"
                 onClicked: {
-                    addListPopup.close();
-                    connected_model.insert(connected_model.index, {title: newTitleContainer.text, image: newImagePathContainer.text, desc: ""});
+                    addTaskPopup.close();
+                    connectedModel.insert(connectedModel.index, {title: newTitleContainer.text, image: newImagePathContainer.text, desc: ""});
                     newTitleContainer.clear();
                     newImagePathContainer.clear();
                 }

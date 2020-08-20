@@ -4,7 +4,7 @@
         <file>Task.qml</file>
         <file>List.qml</file>
         <file>InfoPopup.qml</file>
-        <file>AddListPopup.qml</file>
+        <file>AddTaskPopup.qml</file>
         <file>images/attach.png</file>
         <file>images/background.png</file>
         <file>images/dots.png</file>

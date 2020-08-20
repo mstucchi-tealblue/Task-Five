@@ -4,11 +4,10 @@ import QtQuick.Controls 2.12
 
 
 Popup {
+    id: settingPopup
     property alias x_val: settingPopup.x
     property alias y_val: settingPopup.y    
     property int index
-
-    id: settingPopup
     x:0
     y:0
     height: 120
@@ -17,7 +16,7 @@ Popup {
         anchors.fill: parent
         Button {
             id: addListButton
-            text: "Add a list"
+            text: "Add a new list"
             onClicked: mainWindow.addList()
         }
         Button {

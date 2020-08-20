@@ -8,51 +8,16 @@ Window {
     id: window
     height: 1080
     width:1920
-    color: "#00c2e0"
+    color: taskInfoPopup.opened || addCardPopup.opened ? "#48a9c5" : "#00c2e0"
     visible: true
 
-
-//    Popup {
-//        id: popu
-//        width:300
-//        height:300
-//    }
-
-    function addList()
-    {
-        lv.model.insert(lv.model.index,{})
-    }
-
-    function removeList(index)
-    {
-        lv.model.remove(index)
-    }
-    Popup{
-        id: alert
-        width: 200
-        height: 100
-        x:990
-        y:540
-        Rectangle {
-            anchors.fill: parent
-            color: "red"
-            Text {
-                anchors.centerIn: parent
-                color: "white"
-                font.bold : true
-                text: "To implement yet"
-            }
-        }
-
-    }
 
     Rectangle {
         id: header
         anchors.left: parent.left
         anchors.right: parent.right
         height: boardName.height + 20
-        color: "#00c2e0"
-
+        color: taskInfoPopup.opened || addCardPopup.opened ? "#48a9c5" : "#00c2e0"
 
         TextInput {
             id: boardName
@@ -86,11 +51,14 @@ Window {
 
     Rectangle {
         id: lvContainer
+        x:20
         anchors {
             top: header.bottom
             bottom: window.bottom            
         }
         width: window.width
+        opacity: taskInfoPopup.opened || addCardPopup.opened ? 0.6 : 1
+
         ListView {
             id: lv
             height: 1000
@@ -99,12 +67,56 @@ Window {
             spacing: 10
             orientation: ListView.Horizontal
             model: initializer
-            delegate: List { /*addCardMouseExt.onClicked: popu.open()*/ }
+            delegate: List {
+                id: listOfTasks
+            }
         }
     }
+
 
     ListModel {
         id: initializer
         ListElement { title : "new"}
     }    
+
+    //Popups
+    InfoPopup {
+        id: taskInfoPopup
+        width: 400
+        height: 300
+        x: window.width/2 - taskInfoPopup.width/2
+        y: window.height/2 - taskInfoPopup.height/2
+    }
+
+    AddTaskPopup {
+        id: addCardPopup
+        width: 400
+        height: 300
+        x: window.width/2 - taskInfoPopup.width/2
+        y: window.height/2 - taskInfoPopup.height/2
+    }
+
+    //Functions
+    function addList()
+    {
+        lv.model.insert(lv.model.index,{})
+    }
+
+    function removeList(index)
+    {
+        lv.model.remove(index)
+    }
+
+    function openInfoPopup(lv, lvmodel)
+    {
+        taskInfoPopup.connectedListview = lv
+        taskInfoPopup.connectedModel = lvmodel
+        taskInfoPopup.open()
+    }
+
+    function openAddListPopup(lvmodel)
+    {
+        addCardPopup.connectedModel = lvmodel
+        addCardPopup.open()
+    }
 }
