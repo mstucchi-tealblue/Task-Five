@@ -11,7 +11,7 @@ Popup {
     x:0
     y:0
     height: 120
-    width: 120
+    width: 200
     ColumnLayout {
         anchors.fill: parent
         Button {

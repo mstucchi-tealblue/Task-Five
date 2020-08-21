@@ -15,10 +15,10 @@ Rectangle{
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: 10
-
         RowLayout{
-            spacing: 85
+            //spacing: 85
             TextInput{
+                Layout.fillWidth: true
                 id: listTitle
                 text: "Add a list title"
                 color: "black"
@@ -27,7 +27,8 @@ Rectangle{
                 selectionColor: 'darkgray'
                 clip: true
             }
-            Image {
+            Image {                
+                Layout.alignment: Qt.AlignLeft
                 id: listSettingsImage
                 source: "images/dots.png"
                 MouseArea
